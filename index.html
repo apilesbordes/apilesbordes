@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apilesbordes - Miel artisanal</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fffbee; color: #333; }
+    header { background: #f6c90e; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; color: #3e2f00; }
+    section { padding: 20px; text-align: center; }
+    .products { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .product { background: #fff8d9; border-radius: 12px; padding: 20px; width: 320px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
+    .product img { max-width: 100%; border-radius: 12px; }
+    label { font-weight: bold; }
+    select, input, textarea, button { margin: 8px 0; padding: 6px; border-radius: 6px; border: 1px solid #ccc; width: 90%; }
+    footer { text-align: center; padding: 20px; background: #f6c90e; margin-top: 20px; }
+    .form-link { display:inline-block; margin-top:10px; padding:8px 12px; background:#f6c90e; border-radius:8px; font-weight:bold; text-decoration:none; color:#000; }
+    .note { margin-top: 20px; font-style: italic; font-weight: bold; color: #a00; }
+  </style>
+</head>
+<body>
+  <!-- Script PayPal -->
+  <script src="https://www.paypal.com/sdk/js?client-id=BAAKdibcjfq3zIS83uVKN9R6ZokO_hZe3nKWAzIiX1Kqor-AlXWg0u_PADbEJP1nE1Oy6oRlj9wq8xaEjU&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
+
+  <header>🍯 Apilesbordes - Miel artisanal</header>
+
+  <section>
+    <h2>Nos miels</h2>
+    <p>Miels 100% naturels, récoltés avec passion en Sologne et en Forêt.</p>
+  </section>
+
+  <!-- ================= PRODUITS ================= -->
+  <section>
+    <h2>🍯 Miel de Sologne</h2>
+    <div class="products">
+      <!-- 250g -->
+      <div class="product">
+        <h3>Pot 250g</h3>
+        <img src="images/miel_sologne_250.jpg" alt="Miel de Sologne 250g">
+        <h4>Retrait</h4>
+        <select id="SOLOGNE250-RETRAIT" onchange="updateButton('SOLOGNE250-RETRAIT')">
+          <option value="1">1 pot – 5 €</option>
+          <option value="2">2 pots – 10 €</option>
+          <option value="3">3 pots – 15 €</option>
+        </select>
+        <div id="paypal-SOLOGNE250-RETRAIT"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Sologne – 250g – Retrait','SOLOGNE250-RETRAIT')">📝 Remplir le formulaire</a>
+
+        <h4>Colissimo</h4>
+        <select id="SOLOGNE250-COLISSIMO" onchange="updateButton('SOLOGNE250-COLISSIMO')">
+          <option value="1">1 pot – 12,35 €</option>
+          <option value="2">2 pots – 19,40 €</option>
+          <option value="3">3 pots – 28,10 €</option>
+        </select>
+        <div id="paypal-SOLOGNE250-COLISSIMO"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Sologne – 250g – Colissimo','SOLOGNE250-COLISSIMO')">📝 Remplir le formulaire</a>
+
+        <h4>Mondial Relay</h4>
+        <select id="SOLOGNE250-RELAY" onchange="updateButton('SOLOGNE250-RELAY')">
+          <option value="1">1 pot – 9,40 €</option>
+          <option value="2">2 pots – 15,40 €</option>
+          <option value="3">3 pots – 21,40 €</option>
+        </select>
+        <div id="paypal-SOLOGNE250-RELAY"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Sologne – 250g – Mondial Relay','SOLOGNE250-RELAY')">📝 Remplir le formulaire</a>
+      </div>
+
+      <!-- 500g -->
+      <div class="product">
+        <h3>Pot 500g</h3>
+        <img src="images/miel_sologne_500.jpg" alt="Miel de Sologne 500g">
+        <h4>Retrait</h4>
+        <select id="SOLOGNE500-RETRAIT" onchange="updateButton('SOLOGNE500-RETRAIT')">
+          <option value="1">1 pot – 7 €</option>
+          <option value="2">2 pots – 14 €</option>
+          <option value="3">3 pots – 21 €</option>
+        </select>
+        <div id="paypal-SOLOGNE500-RETRAIT"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Sologne – 500g – Retrait','SOLOGNE500-RETRAIT')">📝 Remplir le formulaire</a>
+
+        <h4>Colissimo</h4>
+        <select id="SOLOGNE500-COLISSIMO" onchange="updateButton('SOLOGNE500-COLISSIMO')">
+          <option value="1">1 pot – 16,40 €</option>
+          <option value="2">2 pots – 27,10 €</option>
+          <option value="3">3 pots – 35,65 €</option>
+        </select>
+        <div id="paypal-SOLOGNE500-COLISSIMO"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Sologne – 500g – Colissimo','SOLOGNE500-COLISSIMO')">📝 Remplir le formulaire</a>
+
+        <h4>Mondial Relay</h4>
+        <select id="SOLOGNE500-RELAY" onchange="updateButton('SOLOGNE500-RELAY')">
+          <option value="1">1 pot – 12,40 €</option>
+          <option value="2">2 pots – 20,40 €</option>
+          <option value="3">3 pots – 28,40 €</option>
+        </select>
+        <div id="paypal-SOLOGNE500-RELAY"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Sologne – 500g – Mondial Relay','SOLOGNE500-RELAY')">📝 Remplir le formulaire</a>
+      </div>
+
+      <!-- 1kg -->
+      <div class="product">
+        <h3>Pot 1kg</h3>
+        <img src="images/miel_sologne_1kg.jpg" alt="Miel de Sologne 1kg">
+        <h4>Retrait</h4>
+        <select id="SOLOGNE1KG-RETRAIT" onchange="updateButton('SOLOGNE1KG-RETRAIT')">
+          <option value="1">1 pot – 13 €</option>
+          <option value="2">2 pots – 26 €</option>
+          <option value="3">3 pots – 39 €</option>
+        </select>
+        <div id="paypal-SOLOGNE1KG-RETRAIT"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Sologne – 1kg – Retrait','SOLOGNE1KG-RETRAIT')">📝 Remplir le formulaire</a>
+
+        <h4>Colissimo</h4>
+        <select id="SOLOGNE1KG-COLISSIMO" onchange="updateButton('SOLOGNE1KG-COLISSIMO')">
+          <option value="1">1 pot – 26,10 €</option>
+          <option value="2">2 pots – 40,65 €</option>
+          <option value="3">3 pots – 53,65 €</option>
+        </select>
+        <div id="paypal-SOLOGNE1KG-COLISSIMO"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Sologne – 1kg – Colissimo','SOLOGNE1KG-COLISSIMO')">📝 Remplir le formulaire</a>
+
+        <h4>Mondial Relay</h4>
+        <select id="SOLOGNE1KG-RELAY" onchange="updateButton('SOLOGNE1KG-RELAY')">
+          <option value="1">1 pot – 19,40 €</option>
+          <option value="2">2 pots – 33,40 €</option>
+          <option value="3" disabled>3 pots – ❌ Non disponible</option>
+        </select>
+        <div id="paypal-SOLOGNE1KG-RELAY"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Sologne – 1kg – Mondial Relay','SOLOGNE1KG-RELAY')">📝 Remplir le formulaire</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MIEL DE FORET ================= -->
+  <section>
+    <h2>🌲 Miel de Forêt</h2>
+    <div class="products">
+      <!-- 250g -->
+      <div class="product">
+        <h3>Pot 250g</h3>
+        <img src="images/miel_foret_250.jpg" alt="Miel de Forêt 250g">
+        <h4>Retrait</h4>
+        <select id="FORET250-RETRAIT" onchange="updateButton('FORET250-RETRAIT')">
+          <option value="1">1 pot – 5 €</option>
+          <option value="2">2 pots – 10 €</option>
+          <option value="3">3 pots – 15 €</option>
+        </select>
+        <div id="paypal-FORET250-RETRAIT"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Forêt – 250g – Retrait','FORET250-RETRAIT')">📝 Remplir le formulaire</a>
+
+        <h4>Colissimo</h4>
+        <select id="FORET250-COLISSIMO" onchange="updateButton('FORET250-COLISSIMO')">
+          <option value="1">1 pot – 12,35 €</option>
+          <option value="2">2 pots – 19,40 €</option>
+          <option value="3">3 pots – 28,10 €</option>
+        </select>
+        <div id="paypal-FORET250-COLISSIMO"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Forêt – 250g – Colissimo','FORET250-COLISSIMO')">📝 Remplir le formulaire</a>
+
+        <h4>Mondial Relay</h4>
+        <select id="FORET250-RELAY" onchange="updateButton('FORET250-RELAY')">
+          <option value="1">1 pot – 9,40 €</option>
+          <option value="2">2 pots – 15,40 €</option>
+          <option value="3">3 pots – 21,40 €</option>
+        </select>
+        <div id="paypal-FORET250-RELAY"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Forêt – 250g – Mondial Relay','FORET250-RELAY')">📝 Remplir le formulaire</a>
+      </div>
+
+      <!-- 500g -->
+      <div class="product">
+        <h3>Pot 500g</h3>
+        <img src="images/miel_foret_500.jpg" alt="Miel de Forêt 500g">
+        <h4>Retrait</h4>
+        <select id="FORET500-RETRAIT" onchange="updateButton('FORET500-RETRAIT')">
+          <option value="1">1 pot – 7 €</option>
+          <option value="2">2 pots – 14 €</option>
+          <option value="3">3 pots – 21 €</option>
+        </select>
+        <div id="paypal-FORET500-RETRAIT"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Forêt – 500g – Retrait','FORET500-RETRAIT')">📝 Remplir le formulaire</a>
+
+        <h4>Colissimo</h4>
+        <select id="FORET500-COLISSIMO" onchange="updateButton('FORET500-COLISSIMO')">
+          <option value="1">1 pot – 16,40 €</option>
+          <option value="2">2 pots – 27,10 €</option>
+          <option value="3">3 pots – 35,65 €</option>
+        </select>
+        <div id="paypal-FORET500-COLISSIMO"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Forêt – 500g – Colissimo','FORET500-COLISSIMO')">📝 Remplir le formulaire</a>
+
+        <h4>Mondial Relay</h4>
+        <select id="FORET500-RELAY" onchange="updateButton('FORET500-RELAY')">
+          <option value="1">1 pot – 12,40 €</option>
+          <option value="2">2 pots – 20,40 €</option>
+          <option value="3">3 pots – 28,40 €</option>
+        </select>
+        <div id="paypal-FORET500-RELAY"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Forêt – 500g – Mondial Relay','FORET500-RELAY')">📝 Remplir le formulaire</a>
+      </div>
+
+      <!-- 1kg -->
+      <div class="product">
+        <h3>Pot 1kg</h3>
+        <img src="images/miel_foret_1kg.jpg" alt="Miel de Forêt 1kg">
+        <h4>Retrait</h4>
+        <select id="FORET1KG-RETRAIT" onchange="updateButton('FORET1KG-RETRAIT')">
+          <option value="1">1 pot – 13 €</option>
+          <option value="2">2 pots – 26 €</option>
+          <option value="3">3 pots – 39 €</option>
+        </select>
+        <div id="paypal-FORET1KG-RETRAIT"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Forêt – 1kg – Retrait','FORET1KG-RETRAIT')">📝 Remplir le formulaire</a>
+
+        <h4>Colissimo</h4>
+        <select id="FORET1KG-COLISSIMO" onchange="updateButton('FORET1KG-COLISSIMO')">
+          <option value="1">1 pot – 26,10 €</option>
+          <option value="2">2 pots – 40,65 €</option>
+          <option value="3">3 pots – 53,65 €</option>
+        </select>
+        <div id="paypal-FORET1KG-COLISSIMO"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Forêt – 1kg – Colissimo','FORET1KG-COLISSIMO')">📝 Remplir le formulaire</a>
+
+        <h4>Mondial Relay</h4>
+        <select id="FORET1KG-RELAY" onchange="updateButton('FORET1KG-RELAY')">
+          <option value="1">1 pot – 19,40 €</option>
+          <option value="2">2 pots – 33,40 €</option>
+          <option value="3" disabled>3 pots – ❌ Non disponible</option>
+        </select>
+        <div id="paypal-FORET1KG-RELAY"></div>
+        <a href="#formulaire-commande" class="form-link" onclick="remplirProduit('Miel de Forêt – 1kg – Mondial Relay','FORET1KG-RELAY')">📝 Remplir le formulaire</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FORMULAIRE DE COMMANDE ================= -->
+  <section id="formulaire-commande">
+    <h2>📦 Formulaire de commande</h2>
+    <p>Merci de remplir ce formulaire après votre paiement PayPal.</p>
+
+    <form action="https://formspree.io/f/mrbajnvb" method="POST">
+      <label for="name">Nom et prénom :</label><br>
+      <input type="text" id="name" name="name" required><br>
+
+      <label for="address">Adresse complète :</label><br>
+      <textarea id="address" name="address" rows="3" required></textarea><br>
+
+      <label for="relay">Point Relais choisi (facultatif) :</label><br>
+      <input type="text" id="relay" name="relay" placeholder="Ex: Relais Pickup Carrefour Orléans"><br>
+
+      <label for="email">Adresse email :</label><br>
+      <input type="email" id="email" name="email" required><br>
+
+      <label for="phone">Téléphone :</label><br>
+      <input type="tel" id="phone" name="phone" required><br>
+
+      <label for="product">Produits commandés :</label><br>
+      <textarea id="product" name="product" rows="4" readonly></textarea><br>
+
+      <button type="submit">Envoyer ma commande</button>
+    </form>
+
+    <p id="confirmation" style="display:none; color:green; font-weight:bold; margin-top:10px;">
+      ✅ Merci ! Votre commande a bien été transmise.
+    </p>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section>
+    <h2>Contact</h2>
+    <p>📍 Les Bordes 45460 </p>
+    <p>📧 apilesbordes@hotmail.com</p>
+    <p>📞 06 51 72 16 12</p>
+    <p class="note">Pour de plus grandes quantités, m’envoyer un mail 📩</p>
+  </section>
+
+  <footer>
+    © 2025 Apilesbordes - Tous droits réservés
+  </footer>
+
+  <!-- ================= SCRIPT PAYPAL ================= -->
+  <script>
+    // Associer les IDs PayPal
+    function updateButton(ref) {
+      let qty = document.getElementById(ref).value;
+      let container = document.getElementById("paypal-" + ref);
+      container.innerHTML = "";
+      let ids = {
+        "SOLOGNE250-RETRAIT": {1:"DH9HLY9ETJFY4",2:"V2EVFDAAVNJHL",3:"KSU8DPTL4D6NC"},
+        "SOLOGNE250-COLISSIMO": {1:"5WJ9KMY65AF5L",2:"6DDT8SZCQL2Z8",3:"G8RKH7G9WT95Y"},
+        "SOLOGNE250-RELAY": {1:"CRN8LJEHR5RKU",2:"F9NVVWZTY3JUC",3:"KLLE7MKGE6X8L"},
+        "SOLOGNE500-RETRAIT": {1:"XVV484E9L5J88",2:"LR5X2GYHP8JLA",3:"SXCTVFPL7MCNQ"},
+        "SOLOGNE500-COLISSIMO": {1:"775VNENGNAEDU",2:"P9TTVVUEKWSHU",3:"XRNWZB447NAZJ"},
+        "SOLOGNE500-RELAY": {1:"D6XW2WZA7AU96",2:"LENQGGWVPQPNS",3:"5MUXDTBNX64HU"},
+        "SOLOGNE1KG-RETRAIT": {1:"HPJS5JWGAJH2L",2:"JGJ6LNGEXPYVE",3:"75942EJVQWJYN"},
+        "SOLOGNE1KG-COLISSIMO": {1:"SR6XNDCVJ7ZNQ",2:"SV4RXKKW8M9ZY",3:"JZM9FKF638EPG"},
+        "SOLOGNE1KG-RELAY": {1:"2Q5Q5TC38M7EW",2:"LQEBL33BSRPCE"},
+        "FORET250-RETRAIT": {1:"SD3VEEK7KLBA8",2:"CMPHKNL52PYL4",3:"CCZ3ETEEQULYY"},
+        "FORET250-COLISSIMO": {1:"2337EXHEWZRG2",2:"GC97KDKHQ64RU",3:"YM4JPND6LTWKN"},
+        "FORET250-RELAY": {1:"U7JUFT42DG2Q8",2:"MPUCYVLP886J6",3:"RJ66SJA3GC48A"},
+        "FORET500-RETRAIT": {1:"RBYY8K74HYSSW",2:"FNZFYUGBTKCT6",3:"M3SB9FU89B6G4"},
+        "FORET500-COLISSIMO": {1:"H966L25P5JWRA",2:"LUBAANPJ4KHTW",3:"FKVNH874CDU6E"},
+        "FORET500-RELAY": {1:"Z4FWKPSCMB3FQ",2:"5P8AQVH58GAXG",3:"VQ8SF4DM2QGXS"},
+        "FORET1KG-RETRAIT": {1:"QKHBT9AKT52AW",2:"KFGS9H38KZPW8",3:"6EUEAHYBJG8AG"},
+        "FORET1KG-COLISSIMO": {1:"YGEAXXKKKMSU8",2:"S95WP8CY7ZPN6",3:"H35R5PH8B4YXA"},
+        "FORET1KG-RELAY": {1:"LEGVEK5K6TNYW",2:"V99U9TC8JQ446"}
+      };
+      let buttonId = ids[ref][qty];
+      if(buttonId){ paypal.HostedButtons({ hostedButtonId: buttonId }).render("#paypal-" + ref); }
+    }
+
+    // Pré-remplir le champ produit
+    function remplirProduit(libelle, selectId){
+      let qty = document.getElementById(selectId).value;
+      let produit = libelle + " – " + qty + " pot(s)";
+      let champ = document.getElementById("product");
+      if(champ.value){ champ.value += "\n" + produit; } else { champ.value = produit; }
+    }
+
+    // Confirmation Formspree
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("form");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          form.reset();
+          document.getElementById("confirmation").style.display = "block";
+        }
+      });
+
+      // Initialiser les boutons PayPal
+      document.querySelectorAll("select").forEach(sel => updateButton(sel.id));
+    });
+  </script>
+</body>
+</html>
