@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apilesbordes - Miel Artisanal de Sologne</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #fffbee; color: #333; line-height: 1.6; }
+header { background: #f6c90e; padding: 30px 20px; text-align: center; color: #3e2f00; font-size: 28px; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+section { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+h2 { color: #3e2f00; border-bottom: 2px solid #f6c90e; padding-bottom: 5px; margin-top: 0; }
+.products-list { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
+.product-row { display: flex; justify-content: space-between; align-items: center; background: #fffdf0; padding: 12px; border-radius: 8px; border: 1px solid #f0e6cd; }
+.product-info { font-weight: bold; font-size: 16px; }
+.btn-qty { background: #f6c90e; color: #3e2f00; font-weight: bold; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; margin-left: 5px; }
+.btn-qty:hover { background: #e0b800; }
+.btn-danger { background: #e74c3c; color: white; }
+.btn-danger:hover { background: #c0392b; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+th { background: #fafafa; }
+.total-box { font-size: 18px; margin-top: 15px; text-align: right; font-weight: bold; }
+form { display: flex; flex-direction: column; gap: 10px; max-width: 500px; margin: 15px auto 0; }
+input, textarea, select, .form-btn { padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 15px; width: 100%; box-sizing: border-box; }
+.form-btn { background: #f6c90e; color: #3e2f00; font-weight: bold; border: none; cursor: pointer; margin-top: 10px; }
+.form-btn:hover { background: #e0b800; }
+.btn-link { background: #e67e22; color: white; text-align: center; text-decoration: none; display: block; padding: 10px; border-radius: 6px; font-weight: bold; margin: 10px 0; }
+.btn-link:hover { background: #d35400; }
+.paypal-button-sim { background: #ffc439; color: #111; font-weight: bold; text-align: center; padding: 12px; border-radius: 30px; cursor: pointer; margin-top: 20px; font-size: 16px; border: none; width: 100%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+</style>
+</head>
+<body>
+
+<header>🍯 Apilesbordes - Miel Artisanal</header>
+
+<div class="container">
+
+    <!-- CATALOGUE DES MIELS -->
+    <section>
+        <h2>🐝 Notre Catalogue (Ajoutez vos pots)</h2>
+        <div class="products-list">
+            <!-- Sologne -->
+            <div class="product-row">
+                <div class="product-info">🍯 Miel de Sologne - Pot 250g (5.00 €)</div>
+                <div>
+                    <button class="btn-qty" onclick="modifierQuantite('s250', 1)">+ Ajouter</button>
+                    <button class="btn-qty btn-danger" onclick="modifierQuantite('s250', -1)">- Retirer</button>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="product-info">🍯 Miel de Sologne - Pot 500g (7.00 €)</div>
+                <div>
+                    <button class="btn-qty" onclick="modifierQuantite('s500', 1)">+ Ajouter</button>
+                    <button class="btn-qty btn-danger" onclick="modifierQuantite('s500', -1)">- Retirer</button>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="product-info">🍯 Miel de Sologne - Pot 1kg (13.00 €)</div>
+                <div>
+                    <button class="btn-qty" onclick="modifierQuantite('s1k', 1)">+ Ajouter</button>
+                    <button class="btn-qty btn-danger" onclick="modifierQuantite('s1k', -1)">- Retirer</button>
+                </div>
+            </div>
+            <!-- Forêt -->
+            <div class="product-row">
+                <div class="product-info">🌲 Miel de Forêt - Pot 250g (5.00 €)</div>
+                <div>
+                    <button class="btn-qty" onclick="modifierQuantite('f250', 1)">+ Ajouter</button>
+                    <button class="btn-qty btn-danger" onclick="modifierQuantite('f250', -1)">- Retirer</button>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="product-info">🌲 Miel de Forêt - Pot 500g (7.00 €)</div>
+                <div>
+                    <button class="btn-qty" onclick="modifierQuantite('f500', 1)">+ Ajouter</button>
+                    <button class="btn-qty btn-danger" onclick="modifierQuantite('f500', -1)">- Retirer</button>
+                </div>
+            </div>
+            <div class="product-row">
+                <div class="product-info">🌲 Miel de Forêt - Pot 1kg (13.00 €)</div>
+                <div>
+                    <button class="btn-qty" onclick="modifierQuantite('f1k', 1)">+ Ajouter</button>
+                    <button class="btn-qty btn-danger" onclick="modifierQuantite('f1k', -1)">- Retirer</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVRAISON -->
+    <section>
+        <h2>📦 Mode d'expédition</h2>
+        <label>Sélectionnez votre mode de livraison :</label>
+        <select id="livraison-select" onchange="calculerTout()">
+            <option value="retrait">Retrait sur place aux Bordes (0.00 €)</option>
+            <option value="colissimo">Envoi à domicile (Colissimo)</option>
+            <option value="relay">Mondial Relay - En Point Relais Commerce</option>
+            <option value="locker">Mondial Relay - En Locker (Casier 24/7)</option>
+        </select>
+    </section>
+
+    <!-- PANIER -->
+    <section>
+        <h2>🛒 Récapitulatif de votre Panier</h2>
+        <table>
+            <thead>
+                <tr><th>Produit</th><th>Quantité</th><th>Prix</th></tr>
+            </thead>
+            <tbody id="panier-lignes">
+                <tr><td colspan="3" style="color:#888; font-style:italic;">Votre panier est vide</td></tr>
+            </tbody>
+        </table>
+        
+        <div class="total-box">
+            <p>Sous-total miel : <span id="txt-miel">0.00 €</span></p>
+            <p>Frais d'expédition : <span id="txt-frais">0.00 €</span></p>
+            <p style="font-size:22px; color:#A67C00;">Total Général : <span id="txt-total">0.00 €</span></p>
+        </div>
+
+        <button class="paypal-button-sim" onclick="alert('Simulation : Paiement PayPal initié avec succès pour le montant total affiché ! Vos clients valideront ensuite leurs coordonnées.')">Payer de manière sécurisée via PayPal</button>
+    </section>
+
+    <!-- FORMULAIRE -->
+    <section>
+        <h2>📝 Coordonnées de Livraison</h2>
+        <form action="https://formspree.io" method="POST" onsubmit="return validerPanierAvantEnvoi();">
+            <label>Nom et Prénom :</label>
+            <input type="text" name="nom" required placeholder="Ex: Marie Durant">
+            
+            <label>Adresse e-mail :</label>
+            <input type="email" name="email" required placeholder="Ex: marie.durant@outlook.fr">
+
+            <!-- Bloc Point Relais Dynamique -->
+            <div id="bloc-relais" style="display:none; background:#fff9e6; border-left:4px solid #e67e22; padding:15px; border-radius:4px; box-sizing:border-box;">
+                <p style="margin:0 0 5px 0;"><strong>📍 Trouver votre Point Relais ou Casier :</strong></p>
+                <a href="https://mondialrelay.fr" target="_blank" class="btn-link">Ouvrir la carte officielle Mondial Relay</a>
+                <label>Renseignez ici le nom et la ville du relais sélectionné :</label>
+                <input type="text" id="magasin-relais" name="relais_magasin" placeholder="Ex: Locker Intermarche, Bonnee">
+            </div>
+
+            <label>Adresse postale complète (ou adresse de facturation) :</label>
+            <textarea name="adresse" rows="3" required placeholder="Ex: 12 rue de la Sologne, 45460 Les Bordes"></textarea>
+            
+            <input type="hidden" id="mail-produits" name="commande_details">
+            <input type="hidden" id="mail-total" name="commande_total">
+            <button type="submit" class="form-btn">Enregistrer mes coordonnées de livraison</button>
+        </form>
+    </section>
+
+</div>
+
+<footer>📍 Les Bordes 45460 • apilesbordes@hotmail.com</footer>
+
+<script>
+// Base de données des quantités en mémoire
+var panier = { s250: 0, s500: 0, s1k: 0, f250: 0, f500: 0, f1k: 0 };
+
+var catalogue = {
+    s250: { nom: "Miel Sologne 250g", prix: 5, poids: 385 },
+    s500: { nom: "Miel Sologne 500g", prix: 7, poids: 682 },
+    s1k:  { nom: "Miel Sologne 1kg",  prix: 13, poids: 1320 },
+    f250: { nom: "Miel Forêt 250g",   prix: 5, poids: 385 },
+    f500: { nom: "Miel Forêt 500g",   prix: 7, poids: 682 },
+    f1k:  { nom: "Miel Forêt 1kg",    prix: 13, poids: 1320 }
+};
+
+function modifierQuantite(id, valeur) {
+    panier[id] += valeur;
+    if (panier[id] < 0) panier[id] = 0; // Sécurité pas de quantité négative
+    calculerTout();
+}
+
+function calculerTout() {
+    var tbody = document.getElementById('panier-lignes');
+    tbody.innerHTML = '';
+    
+    var totalMiel = 0;
+    var poidsTotal = 0;
+    var listeTextuelle = [];
+    var aDesArticles = false;
+
+    for (var key in panier) {
+        var qte = panier[key];
+        if (qte > 0) {
+            aDesArticles = true;
+            var prod = catalogue[key];
+            var sousTotal = qte * prod.prix;
+            poidsTotal += qte * prod.poids;
+            totalMiel += sousTotal;
+
+            tbody.innerHTML += '<tr><td>' + prod.nom + '</td><td>' + qte + '</td><td>' + sousTotal.toFixed(2) + ' €</td></tr>';
+            listeTextuelle.push(qte + 'x ' + prod.nom);
+        }
+    }
+
