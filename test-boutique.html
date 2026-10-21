@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apilesbordes - Miel artisanal</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;padding:0;background:#fffbee;color:#333;}
+header{background:#f6c90e;padding:20px;text-align:center;font-size:28px;font-weight:bold;color:#3e2f00;}
+section{padding:20px;text-align:center;}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;justify-items:center;}
+@media(max-width:900px){.products{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.products{grid-template-columns:1fr;}}
+.product{background:#fff8d9;border-radius:12px;padding:20px;width:100%;max-width:280px;box-shadow:0 4px 8px rgba(0,0,0,0.1);text-align:center;}
+.product img{max-width:100%;border-radius:12px;margin-bottom:10px;}
+.product h3{margin-bottom:5px;}
+.qty{width:100%;padding:6px;border-radius:6px;margin-bottom:10px;}
+#cart{background:#fff8d9;border-radius:12px;padding:20px;max-width:600px;margin:20px auto;box-shadow:0 4px 8px rgba(0,0,0,0.1);text-align:left;}
+#cart h2{text-align:center;}
+#cart table{width:100%;border-collapse:collapse;margin-bottom:15px;}
+#cart table th,#cart table td{border:1px solid #ccc;padding:8px;text-align:center;}
+form{display:flex;flex-direction:column;gap:12px;max-width:500px;margin:0 auto;text-align:left;}
+form label{font-weight:bold;margin-top:6px;}
+form input,form textarea,form select,form button{padding:8px;border-radius:6px;border:1px solid #ccc;font-size:15px;width:100%;box-sizing:border-box;}
+form button{background:#f6c90e;color:#3e2f00;font-weight:bold;cursor:pointer;transition:background 0.2s;}
+form button:hover{background:#e0b800;}
+footer{text-align:center;padding:20px;background:#f6c90e;margin-top:20px;}
+.relay-item{padding:6px;margin:4px 0;border:1px solid #ccc;border-radius:6px;cursor:pointer;text-align:left;}
+.relay-item:hover{background:#f6c90e;}
+</style>
+</head>
+<body>
+
+<header>🍯 Apilesbordes - Miel artisanal</header>
+
+<section>
+<h2>Nos miels</h2>
+<p>Miels 100% naturels, récoltés avec passion en Sologne et en Forêt.</p>
+</section>
+
+<p style="background:#fff1c5;padding:12px;text-align:center"><strong>VERSION DE TEST :</strong> paiements PayPal Sandbox uniquement. Aucune commande réelle à honorer.</p>
+<!-- produits -->
+<section>
+<h2>🍯 Miel de Sologne</h2>
+<div class="products">
+<div class="product"><h3>Pot 250g</h3><img src="images/miel_sologne_250.jpg" alt=""><label>Quantité :</label>
+<select class="qty" data-name="Miel de Sologne 250g" data-weight="0.385" data-price="5">
+<option value="0">-- Sélectionnez --</option><option value="1">1 pot – 5 €</option><option value="2">2 pots – 10 €</option><option value="3">3 pots – 15 €</option></select></div>
+<div class="product"><h3>Pot 500g</h3><img src="images/miel_sologne_500.jpg" alt=""><label>Quantité :</label>
+<select class="qty" data-name="Miel de Sologne 500g" data-weight="0.682" data-price="7">
+<option value="0">-- Sélectionnez --</option><option value="1">1 pot – 7 €</option><option value="2">2 pots – 14 €</option><option value="3">3 pots – 21 €</option></select></div>
+<div class="product"><h3>Pot 1kg</h3><img src="images/miel_sologne_1kg.jpg" alt=""><label>Quantité :</label>
+<select class="qty" data-name="Miel de Sologne 1kg" data-weight="1.320" data-price="13">
+<option value="0">-- Sélectionnez --</option><option value="1">1 pot – 13 €</option><option value="2">2 pots – 26 €</option><option value="3">3 pots – 39 €</option></select></div>
+</div>
+</section>
+
+<section>
+<h2>🌲 Miel de Forêt</h2>
+<div class="products">
+<div class="product"><h3>Pot 250g</h3><img src="images/miel_foret_250.jpg" alt=""><label>Quantité :</label>
+<select class="qty" data-name="Miel de Forêt 250g" data-weight="0.385" data-price="5">
+<option value="0">-- Sélectionnez --</option><option value="1">1 pot – 5 €</option><option value="2">2 pots – 10 €</option><option value="3">3 pots – 15 €</option></select></div>
+<div class="product"><h3>Pot 500g</h3><img src="images/miel_foret_500.jpg" alt=""><label>Quantité :</label>
+<select class="qty" data-name="Miel de Forêt 500g" data-weight="0.682" data-price="7">
+<option value="0">-- Sélectionnez --</option><option value="1">1 pot – 7 €</option><option value="2">2 pots – 14 €</option><option value="3">3 pots – 21 €</option></select></div>
+<div class="product"><h3>Pot 1kg</h3><img src="images/miel_foret_1kg.jpg" alt=""><label>Quantité :</label>
+<select class="qty" data-name="Miel de Forêt 1kg" data-weight="1.320" data-price="13">
+<option value="0">-- Sélectionnez --</option><option value="1">1 pot – 13 €</option><option value="2">2 pots – 26 €</option><option value="3">3 pots – 39 €</option></select></div>
+</div>
+</section>
+
+<section id="cart">
+<h2>🛒 Mon Panier</h2>
+<table id="cart-table"><thead><tr><th>Produit</th><th>Qté</th><th>Prix</th></tr></thead><tbody></tbody></table>
+<p><strong>Total Produits :</strong> <span id="total-produit">0 €</span></p>
+<p><strong>Frais de livraison :</strong> <span id="frais-livraison">0 €</span></p>
+<p><strong>Total à payer :</strong> <span id="total-general">0 €</span></p>
+</section>
+
+<section id="options-livraison" class="cart">
+<h2>Livraison & Paiement</h2>
+<label for="livraison-select">Mode de livraison :</label>
+<select id="livraison-select">
+<option value="retrait">Retrait (0 €)</option>
+<option value="colissimo">Colissimo</option>
+<option value="relay">Mondial Relay Point Relais</option>
+<option value="locker">Mondial Relay Locker</option>
+</select>
+<p id="relay-hint" style="color:red;font-weight:bold;display:block;margin-top:8px;">Sélectionnez Mondial Relay pour rechercher votre point relais</p>
+<div id="relay-search" style="display:none;margin-top:10px;">
+<label for="cp">Code postal :</label>
+<input type="text" id="cp" placeholder="75001" style="width:130px;display:inline-block;margin-right:8px;">
+<button type="button" onclick="searchRelay()">Rechercher un point relais</button>
+<div id="relay-results" class="relay-list" style="margin-top:8px;"></div>
+</div>
+<p id="livraison-note" style="margin-top:12px;"></p>
+<div id="paypal-area" style="margin-top:16px;"></div><p id="paypal-message" aria-live="polite"></p>
+</section>
+
+<section class="cart" id="form-section" style="margin-bottom:40px;">
+<h2>📦 Confirmer la commande</h2>
+<form id="order-form" >
+<label for="name">Nom et prénom :</label><input type="text" id="name" name="name" required>
+<label for="address">Adresse complète (ou vide si retrait / point relais) :</label><textarea id="address" name="address" rows="3"></textarea>
+<label for="email">Adresse email :</label><input type="email" id="email" name="_replyto" required>
+<label for="phone">Téléphone :</label><input type="tel" id="phone" name="phone">
+<label for="relay-field">Point relais choisi (si Mondial Relay) :</label><input type="text" id="relay-field" name="relay" placeholder="Sélectionnez un point relais ou saisissez manuellement">
+<label for="products-field">Produits commandés :</label><textarea id="products-field" name="produits" rows="4" readonly></textarea>
+<input type="hidden" id="hidden-total" name="total"><input type="hidden" id="hidden-poids" name="poids_kg">
+<button type="submit" id="submit-order">Réserver et payer au retrait</button>
+</form>
+<p id="order-status" role="status" aria-live="polite" style="margin-top:12px;font-weight:bold;"></p><p class="note">Retrait : paiement sur place. Livraison : paiement PayPal Sandbox obligatoire avant validation.</p>
+</section>
+
+<footer>
+<p>📍 Les Bordes 45460 • 📧 apilesbordes@hotmail.com • 📞 0651721612</p>
+<p>© 2025 Apilesbordes - Tous droits réservés</p>
+</footer>
+
+
+<script>
+// CONFIGURATION À RENSEIGNER AVANT DE PUBLIER
+const WORKER_URL = 'https://apilesbordes-paiement.apilesbordes.workers.dev';
+const PAYPAL_SANDBOX_CLIENT_ID = 'AZf0AM_YnF6MovVQ7F1MdI9f0MhDb3QUKmFAQijb2bwLL0XmMVYWgp5XM8v8rsjigIaktFQfxXnzTGOm'; // ID public seulement, JAMAIS la clé secrète
+const MAX_WEIGHT_GR=10000;
+const selects=Array.from(document.querySelectorAll('.qty'));
+const modeEl=document.getElementById('livraison-select');
+const statusEl=document.getElementById('order-status');
+const paypalArea=document.getElementById('paypal-area');
+let currentQuote=null;
+let paymentCompleted=false;
+let currentPayPalOrder=null;
+function items(){return selects.filter(s=>Number(s.value)>0).map(s=>({name:s.dataset.name,qty:Number(s.value)}));}
+function customer(){return {name:document.getElementById('name').value,email:document.getElementById('email').value,phone:document.getElementById('phone').value,address:document.getElementById('address').value,relay:document.getElementById('relay-field').value};}
+function requestBody(){return {items:items(),mode:modeEl.value,customer:customer()};}
+function euros(cents){return (cents/100).toFixed(2).replace('.',',')+' €';}
+async function api(path,data){
+  const r=await fetch(WORKER_URL+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+  const response=await r.json().catch(()=>({}));
+  if(!r.ok)throw new Error(response.erreur||'Service temporairement indisponible');
+  return response;
+}
+function validateCustomer(){
+  const c=customer();
+  if(c.name.trim().length<2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email.trim()))throw new Error('Renseignez votre nom et un email valide.');
+  if(modeEl.value==='colissimo' && c.address.trim().length<10)throw new Error('Renseignez votre adresse complète pour Colissimo.');
+  if(['relay','locker'].includes(modeEl.value)&&c.relay.trim().length<5)throw new Error('Renseignez le point relais ou locker choisi.');
+  if(items().length===0)throw new Error('Sélectionnez au moins un pot de miel.');
+}
+async function update(){
+  paymentCompleted=false;currentPayPalOrder=null;
+  const tbody=document.querySelector('#cart-table tbody');tbody.innerHTML='';
+  let prod=0,grams=0;
+  selects.forEach(sel=>{
+    const qty=Number(sel.value);
+    if(!qty)return;
+    const cents=Math.round(Number(sel.dataset.price)*100)*qty;
+    prod+=cents;grams+=Math.round(Number(sel.dataset.weight)*1000)*qty;
+    const tr=document.createElement('tr');
+    [sel.dataset.name,String(qty),euros(cents)].forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.appendChild(td)});
+    tbody.appendChild(tr);
+  });
+  document.getElementById('total-produit').textContent=euros(prod);
+  document.getElementById('hidden-poids').value=(grams/1000).toFixed(3);
+  document.getElementById('products-field').value=items().map(i=>i.qty+' × '+i.name).join('\n');
+  document.getElementById('frais-livraison').textContent='Calcul...';
+  document.getElementById('total-general').textContent='Calcul...';
+  document.getElementById('livraison-note').textContent='';
+  paypalArea.innerHTML='';
+  document.getElementById('paypal-message').textContent='';
+  const button=document.getElementById('submit-order');
+  button.hidden=modeEl.value!=='retrait';
+  button.disabled=!items().length;
+  if(!items().length){document.getElementById('frais-livraison').textContent='0 €';document.getElementById('total-general').textContent='0 €';return;}
+  try{
+    const q=await api('/api/quote',requestBody());
+    currentQuote=q;
+    document.getElementById('frais-livraison').textContent=euros(q.shippingCents);
+    document.getElementById('total-general').textContent=euros(q.totalCents);
+    document.getElementById('hidden-total').value=(q.totalCents/100).toFixed(2);
+    document.getElementById('livraison-note').textContent='Poids total : '+(q.grams/1000).toFixed(3)+' kg';
+    if(modeEl.value!=='retrait')renderPayPal();
+  }catch(e){currentQuote=null;document.getElementById('livraison-note').textContent=e.message;}
+}
+function renderPayPal(){
+  if(!window.paypal){document.getElementById('paypal-message').textContent='PayPal Sandbox indisponible : vérifiez le Client ID dans le fichier HTML.';return;}
+  paypal.Buttons({
+    createOrder:async()=>{
+      validateCustomer();
+      const r=await api('/api/paypal/create',requestBody());
+      currentPayPalOrder=r.paypalOrderId;
+      return r.paypalOrderId;
+    },
+    onApprove:async(data)=>{
+      try{
+        const r=await api('/api/paypal/capture',{paypalOrderId:data.orderID});
+        paymentCompleted=true;
+        statusEl.textContent='✅ Paiement de test confirmé. Commande '+r.reference+' enregistrée.';
+        paypalArea.innerHTML='';
+        document.getElementById('paypal-message').textContent='Conservez votre référence de commande.';
+      }catch(e){statusEl.textContent='⚠️ Paiement à vérifier : '+e.message+'. Contactez la boutique avant de recommencer.';}
+    },
+    onCancel:()=>{statusEl.textContent='Paiement annulé. Aucune commande payée.';},
+    onError:()=>{statusEl.textContent='Erreur PayPal. Si un paiement a été tenté, contactez la boutique avant de réessayer.';}
+  }).render('#paypal-area');
+}
+async function searchRelay(){
+  document.getElementById('relay-results').textContent='La recherche automatique de points relais n’est pas intégrée à cette version. Indiquez le nom et l’adresse du relais dans le champ « Point relais choisi ».';
+}
+function toggleRelayUI(){
+  const relay=['relay','locker'].includes(modeEl.value);
+  document.getElementById('relay-search').style.display=relay?'block':'none';
+  document.getElementById('relay-hint').style.display='none';
+  document.getElementById('paypal-area').style.display=modeEl.value==='retrait'?'none':'block';
+  update();
+}
+document.getElementById('order-form').addEventListener('submit',async(e)=>{
+  e.preventDefault();
+  if(modeEl.value!=='retrait')return;
+  const button=document.getElementById('submit-order');
+  try{
+    validateCustomer();button.disabled=true;statusEl.textContent='Enregistrement en cours...';
+    const r=await api('/api/pickup',requestBody());
+    statusEl.textContent='✅ Réservation enregistrée : '+r.reference+'. Total '+euros(r.totalCents)+' à payer lors du retrait. Conservez cette référence.';
+  }catch(err){statusEl.textContent='⚠️ '+err.message;button.disabled=false;}
+});
+modeEl.addEventListener('change',toggleRelayUI);
+selects.forEach(s=>s.addEventListener('change',update));
+function loadPayPal(){
+  if(PAYPAL_SANDBOX_CLIENT_ID.startsWith('REMPLACER_')){document.getElementById('paypal-message').textContent='Configuration PayPal Sandbox à compléter.';return;}
+  const script=document.createElement('script');
+  script.src='https://www.paypal.com/sdk/js?client-id='+encodeURIComponent(PAYPAL_SANDBOX_CLIENT_ID)+'&currency=EUR&intent=capture';
+  script.onload=update;
+  script.onerror=()=>document.getElementById('paypal-message').textContent='Impossible de charger PayPal.';
+  document.head.appendChild(script);
+}
+loadPayPal();toggleRelayUI();
+</script>
+</body>
+</html>
