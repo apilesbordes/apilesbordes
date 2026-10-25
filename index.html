@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Apilesbordes - Miel artisanal</title>
 <style>
 body{font-family:Arial,sans-serif;margin:0;padding:0;background:#fffbee;color:#333;}
@@ -50,45 +51,52 @@ header .brand{font-weight:bold}header nav{display:flex;gap:20px;font:600 14px Ar
 .test-banner{padding:12px;text-align:center;background:#fff0bd;color:#554016;font:700 13px Arial,sans-serif}.nature-strip{height:280px;background:linear-gradient(90deg,#1c2d1e88,#1c2d1e10),url('apilesbordes-maquette-images/pots-de-miel.jpg') center 57%/cover;display:flex;align-items:center;justify-content:center;color:#fff;font-size:clamp(26px,4vw,49px);text-shadow:0 3px 16px #000b}
 @media(max-width:760px){header{font-size:19px;padding:12px 16px}header nav{gap:10px;font-size:12px}.hero{min-height:510px;padding:55px 24px;background-position:60% center}.hero p{font-size:17px}.story{grid-template-columns:1fr;padding:50px 20px}.story img{height:300px}.bee.three{display:none}#cart,#options-livraison,#form-section{margin:20px 12px;padding:20px}.nature-strip{height:200px}}
 @media(prefers-reduced-motion:reduce){.bee{animation:none}html{scroll-behavior:auto}}
+
+/* Documents intégrés, sans changer les sections commerciales */
+.legal-wrap{max-width:1000px;margin:40px auto;padding:30px;text-align:left;background:#fffdf8;border:1px solid #eaddbd;border-radius:20px}.legal-wrap>h2{color:#314b37;text-align:center}.legal-wrap>p{text-align:center}.legal-panel{border:1px solid #e6d9b9;border-radius:12px;margin:12px 0;background:#fffaf0}.legal-panel summary{cursor:pointer;padding:18px 22px;font:700 20px Georgia,serif;color:#314b37}.legal-content{padding:0 22px 25px;font:16px/1.7 Arial,sans-serif;color:#352a1d}.legal-content h1{font-size:29px;color:#314b37}.legal-content h2{font-size:22px;color:#314b37;margin-top:24px}.legal-content .todo{background:#fff1c7;padding:2px 4px}.legal-content .tag{background:#fff1c7;border-left:4px solid #d99d2d;padding:12px}.test-help{color:#684a0c;font:14px Arial,sans-serif}footer a{color:#314b37}#submit-order:disabled{opacity:.6;cursor:not-allowed}
+/* État des stocks affiché sur les fiches produits */
+.stock-badge{display:block;margin:10px auto;padding:8px 12px;width:max-content;max-width:90%;border-radius:999px;font:700 13px Arial,sans-serif;background:#f9e1dc;color:#9b2f22}
+.product.is-sold-out{opacity:.75}
+.product.is-sold-out .qty{background:#eee;color:#666;cursor:not-allowed}
 </style>
+<link href="https://unpkg.com/leaflet/dist/leaflet.css" rel="stylesheet"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://widget.mondialrelay.com/parcelshop-picker/jquery.plugin.mondialrelay.parcelshoppicker.min.js"></script>
+<style>#relay-search{max-width:760px;margin:16px auto;text-align:left}#mr-widget{min-height:380px;width:100%}#mr-selected{background:#f5f8ef;border:1px solid #c7d6bb;border-radius:10px;padding:12px;margin-top:12px}#mr-error{color:#9a271e}</style>
 </head>
 <body>
-
-<header><span class="brand">🐝 Apilesbordes</span><nav><a href="#histoire">Notre univers</a><a href="#catalogue">Nos miels</a><a href="#cart">Mon panier</a></nav></header>
-<section class="hero" aria-label="Bienvenue chez Apilesbordes"><div class="hero-inner"><div class="eyebrow">De nos ruches à votre table</div><h1>Un miel qui raconte la nature.</h1><p>Une douceur dorée, le parfum des fleurs, et tout le savoir-faire d'une apiculture passionnée.</p><a class="cta" href="#catalogue">Découvrir nos miels →</a></div><span class="bee one" aria-hidden="true">🐝</span><span class="bee two" aria-hidden="true">🐝</span><span class="bee three" aria-hidden="true">🐝</span></section>
-<section id="histoire" class="story"><img src="apilesbordes-maquette-images/abeille-lavande.jpg" alt="Une abeille butine une fleur violette"><div><div class="eyebrow" style="color:#ae7c20">Au rythme des saisons</div><h2>Un petit monde extraordinaire</h2><p>Tout commence par le vol d'une abeille, de fleur en fleur. Chaque pot est une invitation à retrouver le goût des choses simples, le plaisir du miel et la beauté de la nature.</p><p>Bienvenue dans l'univers d'Apilesbordes, au cœur de la Sologne et de la forêt d'Orléans.</p></div></section>
+<header><span class="brand">🐝 Apilesbordes</span><nav><a href="#histoire">Notre univers</a><a href="#catalogue">Nos miels</a><a href="#cart">Mon panier</a><a href="#infos-legales">Infos légales</a></nav></header>
+<section aria-label="Bienvenue chez Apilesbordes" class="hero"><div class="hero-inner"><div class="eyebrow">De nos ruches à votre table</div><h1>Un miel qui raconte la nature.</h1><p>Une douceur dorée, le parfum des fleurs, et tout le savoir-faire d'une apiculture passionnée.</p><a class="cta" href="#catalogue">Découvrir nos miels →</a></div><span aria-hidden="true" class="bee one">🐝</span><span aria-hidden="true" class="bee two">🐝</span><span aria-hidden="true" class="bee three">🐝</span></section>
+<section class="story" id="histoire"><img alt="Une abeille butine une fleur violette" src="apilesbordes-maquette-images/abeille-lavande.jpg"/><div><div class="eyebrow" style="color:#ae7c20">Au rythme des saisons</div><h2>Un petit monde extraordinaire</h2><p>Tout commence par le vol d'une abeille, de fleur en fleur. Chaque pot est une invitation à retrouver le goût des choses simples, le plaisir du miel et la beauté de la nature.</p><p>Bienvenue dans l'univers d'Apilesbordes, au cœur de la Sologne et de la forêt d'Orléans.</p></div></section>
 <div class="nature-strip"><strong>La nature a du goût. 🍯</strong></div>
-
 <div id="catalogue"><div class="section-heading"><div class="eyebrow" style="color:#a77a20">Notre récolte</div><h2>Choisissez votre douceur</h2><p>Du miel de Sologne au miel de Forêt, découvrez nos pots et composez votre panier.</p></div>
-
-<p class="test-banner">⚙️ Boutique en préparation — paiements en ligne indisponibles jusqu’à activation de PayPal Live.</p>
 <!-- produits -->
 <section>
 <h2>🍯 Miel de Sologne</h2>
 <div class="products">
-<div class="product"><h3>Pot 250g</h3><img src="images/miel_sologne_250.jpg" alt=""><label>Quantité :</label>
-<select class="qty" data-name="Miel de Sologne 250g" data-weight="0.385" data-price="5">
+<div class="product"><h3>Pot 250g</h3><img alt="" src="images/miel_sologne_250.jpg"/><label>Quantité :</label>
+<select class="qty" data-name="Miel de Sologne 250g" data-price="5" data-weight="0.385">
 <option value="0">-- Sélectionnez --</option><option value="1">1 pot – 5 €</option><option value="2">2 pots – 10 €</option><option value="3">3 pots – 15 €</option></select></div>
-<div class="product"><h3>Pot 500g</h3><img src="images/miel_sologne_500.jpg" alt=""><label>Quantité :</label>
-<select class="qty" data-name="Miel de Sologne 500g" data-weight="0.682" data-price="7">
+<div class="product"><h3>Pot 500g</h3><img alt="" src="images/miel_sologne_500.jpg"/><label>Quantité :</label>
+<select class="qty" data-name="Miel de Sologne 500g" data-price="7" data-weight="0.682">
 <option value="0">-- Sélectionnez --</option><option value="1">1 pot – 7 €</option><option value="2">2 pots – 14 €</option><option value="3">3 pots – 21 €</option></select></div>
-<div class="product"><h3>Pot 1kg</h3><img src="images/miel_sologne_1kg.jpg" alt=""><label>Quantité :</label>
-<select class="qty" data-name="Miel de Sologne 1kg" data-weight="1.320" data-price="13">
+<div class="product"><h3>Pot 1kg</h3><img alt="" src="images/miel_sologne_1kg.jpg"/><label>Quantité :</label>
+<select class="qty" data-name="Miel de Sologne 1kg" data-price="13" data-weight="1.320">
 <option value="0">-- Sélectionnez --</option><option value="1">1 pot – 13 €</option><option value="2">2 pots – 26 €</option><option value="3">3 pots – 39 €</option></select></div>
 </div>
 </section>
-
 <section>
 <h2>🌲 Miel de Forêt</h2>
 <div class="products">
-<div class="product"><h3>Pot 250g</h3><img src="images/miel_foret_250.jpg" alt=""><label>Quantité :</label>
-<select class="qty" data-name="Miel de Forêt 250g" data-weight="0.385" data-price="5">
+<div class="product"><h3>Pot 250g</h3><img alt="" src="images/miel_foret_250.jpg"/><label>Quantité :</label>
+<select class="qty" data-name="Miel de Forêt 250g" data-price="5" data-weight="0.385">
 <option value="0">-- Sélectionnez --</option><option value="1">1 pot – 5 €</option><option value="2">2 pots – 10 €</option><option value="3">3 pots – 15 €</option></select></div>
-<div class="product"><h3>Pot 500g</h3><img src="images/miel_foret_500.jpg" alt=""><label>Quantité :</label>
-<select class="qty" data-name="Miel de Forêt 500g" data-weight="0.682" data-price="7">
+<div class="product"><h3>Pot 500g</h3><img alt="" src="images/miel_foret_500.jpg"/><label>Quantité :</label>
+<select class="qty" data-name="Miel de Forêt 500g" data-price="7" data-weight="0.682">
 <option value="0">-- Sélectionnez --</option><option value="1">1 pot – 7 €</option><option value="2">2 pots – 14 €</option><option value="3">3 pots – 21 €</option></select></div>
-<div class="product"><h3>Pot 1kg</h3><img src="images/miel_foret_1kg.jpg" alt=""><label>Quantité :</label>
-<select class="qty" data-name="Miel de Forêt 1kg" data-weight="1.320" data-price="13">
+<div class="product"><h3>Pot 1kg</h3><img alt="" src="images/miel_foret_1kg.jpg"/><label>Quantité :</label>
+<select class="qty" data-name="Miel de Forêt 1kg" data-price="13" data-weight="1.320">
 <option value="0">-- Sélectionnez --</option><option value="1">1 pot – 13 €</option><option value="2">2 pots – 26 €</option><option value="3">3 pots – 39 €</option></select></div>
 </div>
 </section>
@@ -100,53 +108,64 @@ header .brand{font-weight:bold}header nav{display:flex;gap:20px;font:600 14px Ar
 <p><strong>Frais de livraison :</strong> <span id="frais-livraison">0 €</span></p>
 <p><strong>Total à payer :</strong> <span id="total-general">0 €</span></p>
 </section>
-
-<section id="options-livraison" class="cart">
-<h2>Livraison & Paiement</h2>
+<section class="cart" id="options-livraison">
+<h2>Livraison &amp; Paiement</h2>
 <label for="livraison-select">Mode de livraison :</label>
 <select id="livraison-select">
 <option value="retrait">Retrait (0 €)</option>
 <option value="colissimo">Colissimo</option>
-<option value="relay" disabled>Mondial Relay Point Relais (indisponible)</option>
-<option value="locker" disabled>Mondial Relay Locker (indisponible)</option>
+<option value="relay">Mondial Relay Point Relais</option>
+<option value="locker">Mondial Relay Locker</option>
 </select>
-<p id="relay-hint" style="color:red;font-weight:bold;display:block;margin-top:8px;">Sélectionnez Mondial Relay pour rechercher votre point relais</p>
+<p id="relay-hint" style="color:red;font-weight:bold;display:block;margin-top:8px;">Choisissez Mondial Relay pour afficher la carte officielle</p>
 <div id="relay-search" style="display:none;margin-top:10px;">
-<label for="cp">Code postal :</label>
-<input type="text" id="cp" placeholder="75001" style="width:130px;display:inline-block;margin-right:8px;">
-<button type="button" onclick="searchRelay()">Rechercher un point relais</button>
-<div id="relay-results" class="relay-list" style="margin-top:8px;"></div>
+<p>Choisissez votre point sur la carte officielle Mondial Relay. Le filtre change selon Point Relais ou Locker.</p>
+<div id="mr-error" role="alert"></div>
+<input autocomplete="off" id="mr-id" type="hidden"/>
+<div id="mr-widget"></div>
+<div id="mr-selected" role="status">Aucun point sélectionné.</div>
 </div>
-<p id="livraison-note" style="margin-top:12px;"></p>
-<div id="paypal-area" style="margin-top:16px;"></div><p id="paypal-message" aria-live="polite"></p>
+<p id="livraison-note" style="margin-top:12px;"></p><p class="test-help">Sélectionnez le point de retrait qui vous convient sur la carte.</p>
+<div id="paypal-area" style="margin-top:16px;"></div><p aria-live="polite" id="paypal-message"></p>
 </section>
-
 <section class="cart" id="form-section" style="margin-bottom:40px;">
 <h2>📦 Confirmer la commande</h2>
-<form id="order-form" >
-<label for="name">Nom et prénom :</label><input type="text" id="name" name="name" required>
+<form id="order-form">
+<label for="name">Nom et prénom :</label><input id="name" name="name" required="" type="text"/>
 <label for="address">Adresse complète (ou vide si retrait / point relais) :</label><textarea id="address" name="address" rows="3"></textarea>
-<label for="email">Adresse email :</label><input type="email" id="email" name="_replyto" required>
-<label for="phone">Téléphone :</label><input type="tel" id="phone" name="phone">
-<label for="relay-field">Point relais choisi (si Mondial Relay) :</label><input type="text" id="relay-field" name="relay" placeholder="Sélectionnez un point relais ou saisissez manuellement">
-<label for="products-field">Produits commandés :</label><textarea id="products-field" name="produits" rows="4" readonly></textarea>
-<input type="hidden" id="hidden-total" name="total"><input type="hidden" id="hidden-poids" name="poids_kg">
-<button type="submit" id="submit-order">Réserver et payer au retrait</button>
+<label for="email">Adresse email :</label><input id="email" name="_replyto" required="" type="email"/>
+<label for="phone">Téléphone :</label><input id="phone" name="phone" type="tel"/>
+<label for="relay-field">Point relais choisi (si Mondial Relay) :</label><input id="relay-field" name="relay" placeholder="Choisissez un point sur la carte officielle" readonly="" type="text"/>
+<label for="products-field">Produits commandés :</label><textarea id="products-field" name="produits" readonly="" rows="4"></textarea>
+<input id="hidden-total" name="total" type="hidden"/><input id="hidden-poids" name="poids_kg" type="hidden"/>
+<button id="submit-order" type="submit">Réserver et payer au retrait</button>
 </form>
-<p id="order-status" role="status" aria-live="polite" style="margin-top:12px;font-weight:bold;"></p><p class="note">Retrait : paiement sur place. Livraison : paiement PayPal sécurisé obligatoire avant validation.</p>
+<p aria-live="polite" id="order-status" role="status" style="margin-top:12px;font-weight:bold;"></p><p class="note">Pour une livraison, payez en ligne avec PayPal. Pour le retrait sur place, réservez et payez lors du retrait.</p>
 </section>
-
+<section class="legal-wrap" id="infos-legales"><h2>Informations légales</h2>
+<details class="legal-panel" id="mentions-legales"><summary>Mentions légales</summary><div class="legal-content"><h2>Éditeur du site</h2><p>Apilesbordes — Jean Robert Delefortrie, entrepreneur individuel<br/>51 rue de Colmart, 45460 Les Bordes, France<br/>SIREN : 813 737 657 — SIRET : 813 737 657 00011<br/>Numéro d'apiculteur : 45012041<br/>Contact : <a href="mailto:apilesbordes@hotmail.com">apilesbordes@hotmail.com</a> — <a href="tel:+33651721612">06 51 72 16 12</a></p><h2>Hébergement</h2><p>Site hébergé sur GitHub Pages, service de GitHub, Inc. Les fonctionnalités de traitement des commandes utilisent également Cloudflare.</p><h2>Propriété intellectuelle</h2><p>Les contenus de ce site ne peuvent être reproduits sans autorisation, sous réserve des exceptions prévues par la loi.</p></div></details>
+<details class="legal-panel" id="cgv"><summary>Conditions générales de vente</summary><div class="legal-content"><h2>Vendeur</h2><p>Apilesbordes — Jean Robert Delefortrie, entrepreneur individuel, 51 rue de Colmart, 45460 Les Bordes, France. SIRET : 813 737 657 00011. Contact : <a href="mailto:apilesbordes@hotmail.com">apilesbordes@hotmail.com</a>.</p><h2>Produits et prix</h2><p>La boutique propose des miels de Sologne et de Forêt, selon disponibilité, en pots de 250 g, 500 g et 1 kg. Les prix des produits sont affichés en euros sur le site. Les frais de livraison et le montant total sont indiqués dans le panier avant paiement.</p><h2>Commande et paiement</h2><p>Le client sélectionne les produits et le mode de livraison, renseigne ses coordonnées et vérifie le montant avant de payer. Pour une livraison, le paiement s'effectue en ligne via PayPal. Pour le retrait sur place, la commande est réservée en ligne et payée lors du retrait. Une référence de commande est affichée après confirmation.</p><h2>Livraison et retrait</h2><p>Les modes proposés sont Colissimo, Mondial Relay en Point Relais ou Locker, et le retrait sur place à Les Bordes. Le client sélectionne son mode de réception et, pour Mondial Relay, son point de retrait avant paiement. Les frais sont calculés selon le poids du panier. Les délais de livraison dépendent notamment du transporteur ; les droits légaux du consommateur en matière de livraison restent applicables.</p><h2>Droit de rétractation</h2><p>Pour les ventes à distance, le consommateur dispose en principe de 14 jours à compter de la réception pour exercer son droit de rétractation, sauf exception légale applicable. La vente de miel n'exclut pas automatiquement ce droit. Pour notifier sa rétractation : <a href="mailto:apilesbordes@hotmail.com">apilesbordes@hotmail.com</a>, en précisant la référence de commande. En cas de rétractation valable, les produits doivent être retournés dans les 14 jours suivant la notification ; les remboursements sont effectués selon les délais et modalités prévus par la loi.</p><h2>Formulaire type de rétractation</h2><p>À l'attention d'Apilesbordes, 51 rue de Colmart, 45460 Les Bordes, France — apilesbordes@hotmail.com.<br/>Je vous notifie ma rétractation du contrat portant sur : __________<br/>Commandé le : __________ / Reçu le : __________<br/>Nom : __________<br/>Adresse : __________<br/>Date : __________</p><h2>Garanties légales</h2><p>Le consommateur bénéficie de la garantie légale de conformité et de la garantie des vices cachés, dans les conditions prévues par la loi. Pour toute demande, contacter apilesbordes@hotmail.com.</p><h2>Données personnelles</h2><p>Les données nécessaires aux commandes sont traitées conformément à la politique de confidentialité accessible ci-dessous.</p><h2>Droit applicable</h2><p>Les présentes conditions sont soumises au droit français, sans préjudice des dispositions impératives de protection du consommateur.</p></div></details>
+<details class="legal-panel" id="confidentialite"><summary>Politique de confidentialité</summary><div class="legal-content"><h2>Responsable du traitement</h2><p>Apilesbordes — Jean Robert Delefortrie, entrepreneur individuel, 51 rue de Colmart, 45460 Les Bordes, France. Contact : <a href="mailto:apilesbordes@hotmail.com">apilesbordes@hotmail.com</a>.</p><h2>Données et finalités</h2><p>Lors d'une commande, nous recueillons les informations fournies par le client : nom, email, téléphone s'il est indiqué, adresse de livraison si nécessaire, point relais sélectionné, produits, quantités, montant et référence de commande. Elles servent à gérer le paiement, la préparation, la livraison, le suivi de la commande et les obligations légales. Ces traitements reposent principalement sur l'exécution du contrat et le respect des obligations légales.</p><h2>Prestataires</h2><p>Selon le mode de commande, les données nécessaires peuvent être traitées par PayPal, Colissimo/La Poste, Mondial Relay, Cloudflare et les prestataires techniques du site. Les données de carte bancaire sont saisies dans l'environnement du prestataire de paiement, et non directement sur ce site.</p><h2>Conservation</h2><p>Les informations sont conservées le temps nécessaire au traitement de la commande et, lorsque la loi l'impose, pendant les durées de conservation comptables et fiscales applicables.</p><h2>Vos droits</h2><p>Vous pouvez exercer les droits prévus par le RGPD (accès, rectification, effacement, limitation et, selon les cas, opposition et portabilité) en écrivant à <a href="mailto:apilesbordes@hotmail.com">apilesbordes@hotmail.com</a>. Vous pouvez également déposer une réclamation auprès de la <a href="https://www.cnil.fr/">CNIL</a>.</p><h2>Services externes</h2><p>Le site charge des ressources de services tiers, notamment pour la carte Mondial Relay et le paiement PayPal. Ces prestataires peuvent appliquer leurs propres politiques de confidentialité et utiliser des traceurs.</p></div></details></section>
 <footer>
 <p>📍 Les Bordes 45460 • 📧 apilesbordes@hotmail.com • 📞 0651721612</p>
-<p>© 2025 Apilesbordes - Tous droits réservés</p>
+<p><a href="#mentions-legales">Mentions légales</a> · <a href="#cgv">CGV</a> · <a href="#confidentialite">Confidentialité</a></p><p>© 2026 Apilesbordes - Tous droits réservés</p>
 </footer>
-
-
 <script>
-// CONFIGURATION À RENSEIGNER AVANT DE PUBLIER
+// CONFIGURATION PAYPAL LIVE / WORKER
 const WORKER_URL = 'https://apilesbordes-paiement.apilesbordes.workers.dev';
 const PAYPAL_CLIENT_ID = 'BAAL_Slyhq8JgpIBhQetVoA1P8OywA6enjo4BfR4Vj_i4BZ6L8FKjJivWWVyYkyVsa3lUMri_CG6Xi80_c'; // Identifiant PUBLIC PayPal Live uniquement ; jamais la clé secrète
+// ===== GESTION SIMPLE DES STOCKS =====
+// true = disponible à la vente ; false = épuisé.
+// Pour remettre une variété en vente, remplacez false par true puis enregistrez index.html.
+const STOCK_MIEL = {
+  sologne: true,
+  foret: false
+};
+// ======================================
 const MAX_WEIGHT_GR=10000;
+const MONDIAL_RELAY_BRAND = "CC23MQYN";
+let selectedRelay = null;
+let mrWidgetReady = false;
 const selects=Array.from(document.querySelectorAll('.qty'));
 const modeEl=document.getElementById('livraison-select');
 const statusEl=document.getElementById('order-status');
@@ -161,7 +180,26 @@ let captureInProgress=false;
 function paypalTrace(etape, details={}){
   console.info('[Apilesbordes][PayPal diagnostic]',new Date().toISOString(),etape,details);
 }
-function items(){return selects.filter(s=>Number(s.value)>0).map(s=>({name:s.dataset.name,qty:Number(s.value)}));}
+function applyStockStatus(){
+  selects.forEach(sel=>{
+    const variety=sel.dataset.name.includes('Sologne')?'sologne':'foret';
+    const available=STOCK_MIEL[variety]===true;
+    const card=sel.closest('.product');
+    sel.disabled=!available;
+    if(!available)sel.value='0';
+    card.classList.toggle('is-sold-out',!available);
+    let badge=card.querySelector('.stock-badge');
+    if(!available){
+      if(!badge){badge=document.createElement('span');badge.className='stock-badge';card.insertBefore(badge,sel);}
+      badge.textContent='Épuisé — momentanément indisponible';
+      sel.setAttribute('aria-label',sel.dataset.name+' épuisé');
+    }else{
+      if(badge)badge.remove();
+      sel.removeAttribute('aria-label');
+    }
+  });
+}
+function items(){return selects.filter(s=>!s.disabled && Number(s.value)>0).map(s=>({name:s.dataset.name,qty:Number(s.value)}));}
 function customer(){return {name:document.getElementById('name').value,email:document.getElementById('email').value,phone:document.getElementById('phone').value,address:document.getElementById('address').value,relay:document.getElementById('relay-field').value};}
 function requestBody(){return {items:items(),mode:modeEl.value,customer:customer()};}
 function euros(cents){return (cents/100).toFixed(2).replace('.',',')+' €';}
@@ -175,7 +213,7 @@ function validateCustomer(){
   const c=customer();
   if(c.name.trim().length<2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.email.trim()))throw new Error('Renseignez votre nom et un email valide.');
   if(modeEl.value==='colissimo' && c.address.trim().length<10)throw new Error('Renseignez votre adresse complète pour Colissimo.');
-  if(['relay','locker'].includes(modeEl.value)&&c.relay.trim().length<5)throw new Error('Renseignez le point relais ou locker choisi.');
+  if(['relay','locker'].includes(modeEl.value) && (!selectedRelay || selectedRelay.mode!==modeEl.value || !selectedRelay.id))throw new Error('Sélectionnez un point Mondial Relay sur la carte.');
   if(items().length===0)throw new Error('Sélectionnez au moins un pot de miel.');
 }
 async function update(){
@@ -204,7 +242,7 @@ async function update(){
   document.getElementById('paypal-message').textContent='';
   const button=document.getElementById('submit-order');
   button.hidden=modeEl.value!=='retrait';
-  button.disabled=!items().length;
+  button.disabled=modeEl.value!=='retrait';
   if(!items().length){document.getElementById('frais-livraison').textContent='0 €';document.getElementById('total-general').textContent='0 €';return;}
   try{
     const q=await api('/api/quote',requestBody());
@@ -214,8 +252,9 @@ async function update(){
     document.getElementById('total-general').textContent=euros(q.totalCents);
     document.getElementById('hidden-total').value=(q.totalCents/100).toFixed(2);
     document.getElementById('livraison-note').textContent='Poids total : '+(q.grams/1000).toFixed(3)+' kg';
-    if(modeEl.value!=='retrait')renderPayPal();
-  }catch(e){if(version!==quoteVersion)return;currentQuote=null;document.getElementById('livraison-note').textContent=e.message;}
+    if(modeEl.value!=='retrait' && window.paypal)renderPayPal();
+    else if(modeEl.value!=='retrait')document.getElementById('paypal-message').textContent='Chargement du paiement PayPal…';
+  }catch(e){if(version!==quoteVersion)return;currentQuote=null;document.getElementById('frais-livraison').textContent='Indisponible';document.getElementById('total-general').textContent='Indisponible';document.getElementById('livraison-note').textContent='⚠️ '+e.message;}
 }
 function renderPayPal(){
   if(!window.paypal){document.getElementById('paypal-message').textContent='PayPal indisponible : vérifiez la configuration Live.';return;}
@@ -299,63 +338,47 @@ function renderPayPal(){
   });
   else document.getElementById('paypal-message').textContent='PayPal non disponible dans ce navigateur.';
 }
-// Recherche de points relais reprise du site initial Apilesbordes.
-async function searchRelay(){
-  const cp=document.getElementById('cp').value.trim();
-  const out=document.getElementById('relay-results');
-  const selectedMode=modeEl.value;
-  if(!/^\d{5}$/.test(cp)){
-    out.textContent='Saisissez un code postal à 5 chiffres.';
+// Widget officiel Mondial Relay V4. Le code enseigne est public, aucune clé privée dans le HTML.
+function resetRelay(){
+  selectedRelay=null;
+  document.getElementById('mr-id').value='';
+  document.getElementById('relay-field').value='';
+  document.getElementById('mr-selected').textContent='Aucun point sélectionné.';
+}
+function initializeMondialRelay(){
+  if(!window.jQuery || !jQuery.fn.MR_ParcelShopPicker){
+    document.getElementById('mr-error').textContent='Impossible de charger la carte Mondial Relay. Réessayez plus tard.';
     return;
   }
-  if(!['relay','locker'].includes(selectedMode))return;
-  out.textContent='Recherche en cours…';
-  try{
-    const response=await fetch('https://apilesbordes.synology.me/mondialrelay.php?cp='+encodeURIComponent(cp));
-    if(!response.ok)throw new Error('Service indisponible');
-    const data=await response.json();
-    if(modeEl.value!==selectedMode)return;
-    out.replaceChildren();
-    if(!Array.isArray(data))throw new Error('Réponse inattendue');
-
-    // Filtrage expérimental fondé sur les valeurs observées dans l'API actuelle.
-    // "VESTIAIRE" est associé aux lockers dans les exemples vérifiés.
-    // Les points sans indication restent non classés : on ne les considère
-    // pas automatiquement comme des relais classiques.
-    const results=data.filter(item=>{
-      const info=String(item.information||'').trim().toUpperCase();
-      const name=String(item.nom||'').trim();
-      const isLocker=info.includes('VESTIAIRE') || /LOCKER|CASIER/i.test(name);
-      if(selectedMode==='locker')return isLocker;
-      if(selectedMode==='relay')return !isLocker;
-      return false;
-    });
-
-    if(!results.length){
-      out.textContent=`Aucun établissement correspondant trouvé (${data.length} résultats reçus). Vérifiez les données renvoyées par Mondial Relay.`;
-      return;
+  const mode=modeEl.value;
+  if(!['relay','locker'].includes(mode))return;
+  const options={
+    Target:'#mr-id', Brand:MONDIAL_RELAY_BRAND, Country:'FR',
+    ColLivMod:mode==='locker'?'APM':'24R',
+    Responsive:true, ShowResultsOnMap:true, Theme:'mondialrelay',
+    OnParcelShopSelected:function(data){
+      if(!data || !data.ID || !['relay','locker'].includes(modeEl.value))return;
+      const id=String(data.ID).trim();
+      const country=String(data.Pays||'FR').trim().toUpperCase();
+      const label=[data.Nom,data.Adresse1,data.Adresse2,[data.CP,data.Ville].filter(Boolean).join(' ')].filter(Boolean).join(' — ');
+      selectedRelay={id,country,mode:modeEl.value,label};
+      document.getElementById('mr-id').value=country+'-'+id;
+      document.getElementById('relay-field').value=(country+'-'+id+' — '+label).slice(0,250);
+      document.getElementById('mr-selected').textContent='✓ '+country+'-'+id+' — '+label;
     }
-    const notice=document.createElement('p');
-    notice.textContent='Filtrage de test basé sur le nom et le champ information. Vérification officielle du type à prévoir avant mise en production.';
-    notice.className='relay-notice';
-    out.appendChild(notice);
-
-    results.forEach(item=>{
-      const d=document.createElement('button');
-      d.type='button';
-      d.className='relay-item';
-      const label=`${item.nom||''} – ${item.adresse||''}, ${item.cp||''} ${item.ville||''}`.trim();
-      d.textContent=label;
-      d.addEventListener('click',()=>{
-        if(modeEl.value!==selectedMode)return;
-        document.getElementById('relay-field').value=label;
-        out.textContent='✓ '+label;
-      });
-      out.appendChild(d);
-    });
+  };
+  try{
+    if(!mrWidgetReady){
+      jQuery('#mr-widget').MR_ParcelShopPicker(options);
+      mrWidgetReady=true;
+    }else{
+      jQuery('#mr-widget').trigger('MR_SetParams',{ColLivMod:options.ColLivMod});
+      jQuery('#mr-widget').trigger('MR_RebindMap');
+    }
+    document.getElementById('mr-error').textContent='';
   }catch(error){
-    console.warn('[Apilesbordes] Recherche de relais indisponible :',error);
-    out.textContent='Recherche indisponible. Réessayez plus tard.';
+    console.error('Widget Mondial Relay',error);
+    document.getElementById('mr-error').textContent='La carte Mondial Relay ne peut pas être affichée.';
   }
 }
 function toggleRelayUI(){
@@ -363,11 +386,11 @@ function toggleRelayUI(){
   document.getElementById('relay-search').style.display=relay?'block':'none';
   document.getElementById('relay-hint').style.display='none';
   document.getElementById('paypal-area').style.display=modeEl.value==='retrait'?'none':'block';
+  if(relay)initializeMondialRelay();
   update();
 }
 document.getElementById('order-form').addEventListener('submit',async(e)=>{
   e.preventDefault();
-  if(modeEl.value!=='retrait')return;
   const button=document.getElementById('submit-order');
   try{
     validateCustomer();button.disabled=true;statusEl.textContent='Enregistrement en cours...';
@@ -376,8 +399,7 @@ document.getElementById('order-form').addEventListener('submit',async(e)=>{
   }catch(err){statusEl.textContent='⚠️ '+err.message;button.disabled=false;}
 });
 modeEl.addEventListener('change',()=>{
-  document.getElementById('relay-field').value='';
-  document.getElementById('relay-results').replaceChildren();
+  resetRelay();
   toggleRelayUI();
 });
 selects.forEach(s=>s.addEventListener('change',update));
@@ -392,7 +414,10 @@ function loadPayPal(){
 document.addEventListener('visibilitychange',()=>{
   if(checkoutInProgress || captureInProgress)paypalTrace('visibilité page',{visibilityState:document.visibilityState,orderID:currentPayPalOrder});
 });
-loadPayPal();toggleRelayUI();
+applyStockStatus();toggleRelayUI();loadPayPal();
+
+window.addEventListener('hashchange',()=>{const panel=document.querySelector(location.hash);if(panel&&panel.matches('details.legal-panel'))panel.open=true;});
+if(location.hash){const panel=document.querySelector(location.hash);if(panel&&panel.matches('details.legal-panel'))panel.open=true;}
 </script>
 </body>
 </html>
